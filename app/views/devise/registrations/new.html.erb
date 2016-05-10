@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+<head>
+  
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/officers">OFFICERS</a></li>
+        <li><%= link_to "IDEAS", ideas_path %></li>
+        <li><%= link_to "PLANS", plans_path %></li>
+        <li><a class="line">|</a></li>
+                <% if current_user %>
+        <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+        <li><%= link_to "LOG IN", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="banner">
+<h1 class="banner-header">SIGN UP</h1>
+</div>
+<div class="body">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="parent">
+    <div class="pass-parent">
+    <%= f.label :email, class: "label" %>
+    <div class="password">
+        <%= f.email_field :email, class: "form" %>
+    </div>
+    </div>
+    <div class="pass-parent">
+    <%= f.label :password, class: "label" %>
+    <div class="password">
+        <%= f.password_field :password, autocomplete: "off", class: "forms" %>
+    </div>
+    </div>
+        <div class="pass-parent">
+    <%= f.label :password_confirmation, class: "label" %>
+    <div class="password">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "forms" %>
+    </div>
+    </div>
+        <%= f.submit "SIGN UP", class: 'btn btn-primary btn-lg signin' %>
+</div>
+
+<% end %>
+
+<style type="text/css">
+        body {
+        font-family: Raleway;
+        font-weight: 300;
+    }
+    .logo {
+  max-width: 320px;
+  position: absolute;
+  right: 50%;
+  margin-right: -159.625px;
+  top: -12%;
+  margin-top: 38.31px;
+}
+    .form {
+        width: 300px;
+        height: 50px;
+        font-size: 20px;
+        opacity: .6;
+        color: #f36b21
+    }
+        .forms {
+        width: 300px;
+        height: 50px;
+        font-size: 20px;
+        opacity: .6;
+        color: #f36b21
+    }
+    .form:hover {
+        opacity: 1;
+    }
+    .form:focus {
+        opacity: 1;
+    }
+    .parent {
+       margin-left: -150px;
+        left: 50%;
+        position: absolute;
+    }
+    .signin {
+        position: absolute;
+        margin-top: 40px;
+        top: 95%;
+    }
+    .label {
+        text-align: center;
+        color: black;
+        font-size: 15px;
+    }
+    .remember {
+        position: absolute;
+        top: 130%;
+        margin-top: 19.5px;
+    }
+    .pass-parent {
+        padding-top: 10px;
+    }
+    .fp {
+        font-size:13px;
+        color: black;
+        position: absolute;
+        top: 133%;
+        margin-top: 17.29px;
+        left: 40%;
+        margin-left: 42.5124px;
+    }
+    .fp:hover {
+        color: black;
+    }
+</style>
+</div>
+<style type="text/css">
+.btn-primary {
+  position: absolute;
+  border-radius: 10px;
+  background-color: #f36b21;
+  border-color:#f36b21;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color:#e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+    .navbar-inverse {
+    opacity: .5;
+    border-radius: 0px;
+    z-index: 100;
+  }
+    .navbar-nav {
+    float: right;
+    font-family: Oswald;
+  }
+    .banner {
+    background: url("https://i.imgur.com/xYQ1wLn.jpg");
+    width: 100%;
+    height:350px;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .banner-header {
+    color: #fff;
+    font-size: 50px;
+    font-family: Oswald;
+    font-weight: 100;
+    margin-left: 10%;
+    text-align: left;
+    position: relative;
+    top: 50%;
+    margin-top: -25px;
+    background-position:10px 200px;
+  }
+    .body {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    height: 500px;
+  }
+  .title {
+    position: relative;
+    text-align: center;
+    font-family: Oswald;
+    font-weight: 300;
+    font-size: 50px;
+    color: #666;
+  }
+    .subtitle {
+    position: relative;
+    text-align: center;
+    font-family: Raleway;
+    font-weight: 300;
+    font-size: 25px;
+    color: #666;
+  }
+  .text {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Raleway;
+    font-size: 35px;
+    color: #666;
+    display: block;
+  }
+    .repof {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Roboto;
+    font-size: 25px;
+    color: #666;
+    display: block;
+  }
+  ul {
+    list-style: none;
+  }
+</style>
+</body>
+</html>

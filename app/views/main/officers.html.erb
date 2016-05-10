@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+  
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">HOME</a></li>
+        <li><a href="officers">OFFICERS</a></li>
+        <li><%= link_to "IDEAS", ideas_path %></li>
+        <li><%= link_to "PLANS", plans_path %></li>
+        <li><a class="line">|</a></li>
+                <% if current_user %>
+        <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+        <li><%= link_to "LOG IN", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="banner">
+    <h1 class="banner-header">OFFICERS</h1>
+</div>
+<div class="body">
+<h1 class="title">Executive Officers</h1><br>
+<ul class="exec">
+<li><h1 class= "text">President : <strong>Bob Qian</strong></h1></li>
+<li><h1 class= "text">Vice President : <strong>Neeraj Namburu</strong></h1></li>
+<li><h1 class= "text">Secretary : <strong>Rachel Chen</strong></h1></li>
+</ul>
+<br>
+<hr style="width: 80%;">
+<br>
+<h1 class="title">Representatives</h1>
+<h3 class="subtitle">Please consider applying to be a representative! Forms can be requested from President Qian.
+</h3>
+<br>
+<ul class="rep">
+<li><h1 class= "text"><strong>Rep. Alex Drury</strong>, representing</h1><h2 class="repof">
+- Alex Drury<br>
+- Catherine Stewart<br>
+- Grace Bumgarner<br>
+- Nathaniel Daniel<br>
+- Syed Shirazi<br>
+- Majed Massad<br>
+- Jon Bumgarner<br>
+- Ismail Habibi<br>
+- Rose DuBois<br>
+- Ambar Herrara
+</h2>
+</li>
+<li><h1 class= "text"><strong>Rep. Tom Nguyen</strong>, representing</h1><h2 class="repof">
+- Tom Nguyen<br>
+- Caleb Barba<br>
+- Kevin Xian<br>
+- Charlie Perkins<br>
+- Danny Gladson<br>
+- Sydney Johnson<br>
+- Mahlet Derege<br>
+- Dontavia Waggoner<br>
+- Mark Eskander<br>
+- Darrel Hayes
+</h2>
+</li>
+<li><h1 class= "text"><strong>Rep. Elvis Thai</strong>, representing</h1><h2 class="repof">
+- Elvis Thai<br>
+- Roshaun Fleming<br>
+- Wesley Schelling<br>
+- Campbell Bledsoe<br>
+- Carrington Capps<br>
+- Alex Phillips<br>
+- Terrance Lumpkin<br>
+- Eli Crouse<br>
+- Conner Schultz<br>
+- Suchetha Shashi
+</h2>
+</li>
+<li><h1 class= "text"><strong>Rep. Connor Clark</strong>, representing</h1><h2 class="repof">
+- Connor Clark<br>
+- Ciera Key<br>
+- Veronica Edwards<br>
+- Sylvie Kendi<br>
+- Mayumi Inso<br>
+- Eli Kirith<br>
+- Alexandria Roberts<br>
+- Austin Yates<br>
+- Jharon Davis<br>
+- Elena Bahan
+</h2>
+</li>
+<li><h1 class= "text"><strong>Rep. Zavier Miller</strong>, representing</h1><h2 class="repof">
+- Zavier Miller<br>
+- Christopher Matthews<br>
+- James Kensler<br>
+- Raef Lawrence<br>
+- Victoria Lim<br>
+- Jessica Pointer<br>
+- Daniel Nguyen<br>
+- Noemi Miller<br>
+- Hudson Haining<br>
+- Mert Sekmen
+</h2>
+</li>
+<li><h1 class= "text"><strong>Rep. Maya Diedrich</strong>, representing</h1><h2 class="repof">
+- Maya Diedrich<br>
+- Terren Powell<br>
+- Marina Mikhaeil<br>
+- Gabrielle Hunter-Davis<br>
+- Melina Nguyen<br>
+- Kinjal Patel<br>
+- Sumaya Muhamed<br>
+- Camden Morris<br>
+- Alan Brooks<br>
+- Ruke Sam-Ogaga
+</h2>
+</li>
+</ul>
+<br>
+<br>
+</div>
+</body>
+</html>
+<style type="text/css">
+    .navbar-inverse {
+    opacity: .5;
+    border-radius: 0px;
+    z-index: 100;
+  }
+    .navbar-nav {
+    float: right;
+    font-family: Oswald;
+  }
+    .banner {
+    background: url("http://i.imgur.com/itTEixl.jpg");
+    width: 100%;
+    height:350px;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .banner-header {
+    color: white;
+    font-size: 50px;
+    font-family: Oswald;
+    font-weight: 100;
+    margin-left: 10%;
+    text-align: left;
+    position: relative;
+    top: 50%;
+    margin-top: -25px;
+  }
+    .body {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    height: 500px;
+  }
+  .title {
+    position: relative;
+    text-align: center;
+    font-family: Oswald;
+    font-weight: 300;
+    font-size: 50px;
+    color: #666;
+  }
+    .subtitle {
+    position: relative;
+    text-align: center;
+    font-family: Raleway;
+    font-weight: 300;
+    font-size: 25px;
+    color: #666;
+  }
+  .text {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Raleway;
+    font-size: 35px;
+    color: #666;
+    display: block;
+  }
+    .repof {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Roboto;
+    font-size: 25px;
+    color: #666;
+    display: block;
+  }
+  ul {
+    list-style: none;
+  }
+</style>

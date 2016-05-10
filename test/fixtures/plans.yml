@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  complete: false
+  up_next: false
+  in_action: false
+
+two:
+  name: MyString
+  complete: false
+  up_next: false
+  in_action: false

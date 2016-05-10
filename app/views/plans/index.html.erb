@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+<head>
+  
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/officers">OFFICERS</a></li>
+        <li><%= link_to "IDEAS", ideas_path %></li>
+        <li><%= link_to "PLANS", plans_path %></li>
+        <li><a class="line">|</a></li>
+                <% if current_user %>
+        <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+        <li><%= link_to "LOG IN", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="banner">
+<h1 class="banner-header">PLANS</h1>
+</div>
+<div class="body">
+<% if current_user %>
+<% if current_user.officer? %>
+<%= link_to new_plan_path do %>
+  <div class="btn btn-primary btn-lg">ADD PLAN</div><br><br><br>
+  <%end %>
+  <% end %>
+  <% end %>
+<% if current_user %>
+<% if current_user.officer? %>
+<h1 class="title">UP NEXT</h1><br>
+  <% @next.each do |plan| %>
+  <h1 class="text"><%=link_to action_plan_path(plan), method: :patch do%><i class="fa fa-square-o square"></i><% end %> Operation <%= plan.name %>: <%= link_to plan, method: :delete do %><i class="fa fa-trash-o trash"></i><% end %>   <%= link_to edit_plan_path(plan) do %><i class="fa fa-pencil pencil"></i><% end %></h1>
+  <% plan.objectives.each do |objective|%>
+  <h4 class="subtitle">- <%= objective.body %></h4>
+  <% end %><br>
+  <% end %>
+  <hr style="width: 70%;"><br>
+  <h1 class="title">IN ACTION</h1><br>
+  <% @action.each do |plan| %>
+  <h1 class="text"><%=link_to complete_plan_path(plan), method: :patch do%><i class="fa fa-square-o square"></i><% end %> Operation <%= plan.name %>:  <%= link_to plan, method: :delete do %><i class="fa fa-trash-o trash"></i><% end %>   <%= link_to edit_plan_path(plan) do %><i class="fa fa-pencil pencil"></i><% end %></h1>
+  <% plan.objectives.each do |objective|%>
+  <h4 class="subtitle">- <%= objective.body %></h4>
+  <% end %><br>
+  <% end %>
+    <hr style="width: 70%;"><br>
+  <h1 class="title">COMPLETE</h1><br>
+  <% @complete.each do |plan| %>
+  <h1 class="text"><i class="fa fa-check-square-o"></i> Operation <%= plan.name %>: <%= link_to plan, method: :delete do %><i class="fa fa-trash-o trash"></i><% end %></h1>
+  <% plan.objectives.each do |objective|%>
+  <h4 class="subtitle">- <%= objective.body %></h4>
+  <% end %><br>
+  <% end %>
+  <% else %>
+  <h1 class="title">UP NEXT</h1><br>
+  <% @next.each do |plan| %>
+  <h1 class="text">Operation <%= plan.name %>:</h1>
+  <% plan.objectives.each do |objective|%>
+  <h4 class="subtitle">- <%= objective.body %></h4>
+  <% end %><br>
+  <% end %>
+  <hr style="width: 70%;"><br>
+  <h1 class="title">IN ACTION</h1><br>
+  <% @action.each do |plan| %>
+  <h1 class="text">Operation <%= plan.name %>:</h1>
+  <% plan.objectives.each do |objective|%>
+  <h4 class="subtitle">- <%= objective.body %></h4>
+  <% end %><br>
+  <% end %>
+    <hr style="width: 70%;"><br>
+  <h1 class="title">COMPLETE</h1><br>
+  <% @complete.each do |plan| %>
+  <h1 class="text"><i class="fa fa-check-square-o"></i> Operation <%= plan.name %>:</h1>
+  <% plan.objectives.each do |objective|%>
+  <h4 class="subtitle">- <%= objective.body %></h4>
+  <% end %><br>
+  <% end %>
+  <% end %>
+  <% else %>
+    <h1 class="title">UP NEXT</h1><br>
+  <% @next.each do |plan| %>
+  <h1 class="text">Operation <%= plan.name %>:</h1>
+  <% plan.objectives.each do |objective|%>
+  <h4 class="subtitle">- <%= objective.body %></h4>
+  <% end %><br>
+  <% end %>
+  <hr style="width: 70%;"><br>
+  <h1 class="title">IN ACTION</h1><br>
+  <% @action.each do |plan| %>
+  <h1 class="text">Operation <%= plan.name %>:</h1>
+  <% plan.objectives.each do |objective|%>
+  <h4 class="subtitle">- <%= objective.body %></h4>
+  <% end %><br>
+  <% end %>
+    <hr style="width: 70%;"><br>
+  <h1 class="title">COMPLETE</h1><br>
+  <% @complete.each do |plan| %>
+  <h1 class="text"><i class="fa fa-check-square-o"></i> Operation <%= plan.name %>:</h1>
+  <% plan.objectives.each do |objective|%>
+  <h4 class="subtitle">- <%= objective.body %></h4>
+  <% end %><br>
+  <% end %>
+  <% end %>
+</div>
+<style type="text/css">
+.trash, .fa-trash-o{
+  position: relative;
+  bottom: 3px;
+}
+.trash {
+  text-decoration: none;
+  width:0px;
+  height: 0px;
+}
+.fa-trash-o:hover {
+  color: rgb(241,92,92);
+  text-decoration: none;
+  background-color: none;
+}
+.square, .fa-square-o{
+  position: relative;
+  right: 25px;
+  bottom: 1px;
+  color: #666;
+}
+.square {
+  text-decoration: none;
+  width:0px;
+  height: 0px;
+}
+.pencil, .fa-pencil{
+  position: relative;
+  bottom: 3px;
+  left:25px;
+  color: black;
+}
+.pencil {
+  text-decoration: none;
+  width:0px;
+  height: 0px;
+}
+.fa-pencil:hover {
+  color: yellow;
+  text-decoration: none;
+  background-color: none;
+}
+    .navbar-inverse {
+    opacity: .5;
+    border-radius: 0px;
+    z-index: 100;
+  }
+    .navbar-nav {
+      float: right;
+    font-family: Oswald;
+  }
+    .banner {
+    background: url("https://i.imgur.com/emV3kKm.jpg");
+    width: 100%;
+    height:350px;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .banner-header {
+    color: white;
+    font-size: 50px;
+    font-family: Oswald;
+    font-weight: 100;
+    margin-left: 10%;
+    text-align: left;
+    position: relative;
+    top: 50%;
+    margin-top: -25px;
+  }
+   .btn-primary {
+  position: absolute;
+  
+  font-family: Open Sans;
+  background-color: #f36b21;
+  border-color:#f36b21;
+}
+.btn-lg {
+    left: 50%;
+  margin-left: -60.725px;
+  border-radius: 10px;
+}
+.pagination > li > a, .pagination > li > span {
+  color: #FD7830
+}
+.pagination > li > a:hover {
+  color: #E66D2B;
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: #FD7830;
+  border-color:#FD7830;
+}
+.more {
+  margin-left: -55.75px;
+  left: 50%;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color:#e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+    .body {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    height: 500px;
+  }
+    .big {
+    position: relative;
+    text-align: center;
+    font-family: Oswald;
+    font-weight: 400;
+    font-size: 70px;
+    color: #444;
+  }
+  .title {
+    position: relative;
+    text-align: center;
+    font-family: Open Sans;
+    font-weight: 300;
+    font-size: 50px;
+    color: #666;
+  }
+    .subtitle {
+    position: relative;
+    text-align: center;
+    font-family: Raleway;
+    font-weight: 300;
+    font-size: 25px;
+    color: #666;
+  }
+  .text {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Oswald;
+    font-size: 35px;
+    color: #666;
+    display: block;
+  }
+    .repof {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Roboto;
+    font-size: 25px;
+    color: #666;
+    display: block;
+  }
+  ul {
+    list-style: none;
+  }
+  .pagination {
+    position: relative;
+    left: 50%;
+    margin-left: -119.125px;
+  }
+</style>
+</body>
+</html>
+

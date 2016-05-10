@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+  
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/officers">OFFICERS</a></li>
+        <li><%= link_to "IDEAS", ideas_path %></li>
+        <li><%= link_to "PLANS", plans_path %></li>
+        <li><a class="line">|</a></li>
+                <% if current_user %>
+        <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+        <li><%= link_to "LOG IN", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="banner">
+<h1 class="banner-header">NEW IDEA</h1>
+</div>
+<div class="body">
+<%= render "form" %>
+</div>
+<style type="text/css">
+.btn-primary {
+  position: absolute;
+  border-radius: 10px;
+  background-color: #f36b21;
+  border-color:#f36b21;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color:#e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+    .navbar-inverse {
+    opacity: .5;
+    border-radius: 0px;
+    z-index: 100;
+  }
+    .navbar-nav {
+    float: right;
+    font-family: Oswald;
+  }
+    .banner {
+    background: url("http://i.imgur.com/aDPhprM.jpg");
+    width: 100%;
+    height:350px;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .banner-header {
+    color: white;
+    font-size: 50px;
+    font-family: Oswald;
+    font-weight: 100;
+    margin-left: 10%;
+    text-align: left;
+    position: relative;
+    top: 50%;
+    margin-top: -25px;
+  }
+    .body {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    height: 500px;
+  }
+  .title {
+    position: relative;
+    text-align: center;
+    font-family: Oswald;
+    font-weight: 300;
+    font-size: 50px;
+    color: #666;
+  }
+    .subtitle {
+    position: relative;
+    text-align: center;
+    font-family: Raleway;
+    font-weight: 300;
+    font-size: 25px;
+    color: #666;
+  }
+  .text {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Raleway;
+    font-size: 35px;
+    color: #666;
+    display: block;
+  }
+    .repof {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Roboto;
+    font-size: 25px;
+    color: #666;
+    display: block;
+  }
+  ul {
+    list-style: none;
+  }
+</style>
+</body>
+</html>
+

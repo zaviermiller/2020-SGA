@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+  
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/officers">OFFICERS</a></li>
+        <li><%= link_to "IDEAS", ideas_path %></li>
+        <li><%= link_to "PLANS", plans_path %></li>
+        <li><a class="line">|</a></li>
+                <% if current_user %>
+        <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+        <li><%= link_to "LOG IN", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="banner">
+<h1 class="banner-header">IDEAS</h1>
+</div>
+<div class="body">
+<h1 class="text">We welcome students' ideas. Please submit your ideas for them to show up here.</h1><br>
+  <%= link_to new_idea_path do %>
+  <div class="btn btn-primary btn-lg">SUBMIT IDEA</div>
+  <% end %>
+  <br><br><br>
+  <hr style="width: 70%;"><br>
+  <h1 class="big">IDEAS</h1>
+  <br>
+  <% @ideas.each do |idea| %>
+
+  <h1 class="title"><%= idea.title %><% if current_user %><% if current_user.officer? %><%= link_to idea, method: :delete do %><p class="trash"><i class="fa fa-3x fa-trash-o"></i></p><% end %><% end %><% end %></h1>
+  <h4 class="subtitle">by: <%= idea.firstname %> <%= idea.lastname %></h4><br>
+  <%= link_to idea_path(idea) do %>
+  <div class="btn btn-primary more">MORE INFO</div>
+    <% end %>
+    <div class="btn-group">
+    <%= link_to like_idea_path(idea), method: :put do %>
+    <div class="btn btn-primary up" type="button">
+  <i class="fa fa-thumbs-o-up fa-lg"></i> <span class="badge"><%= idea.get_upvotes.size %></span>
+</div>
+<% end %>
+<%= link_to dislike_idea_path(idea), method: :put do %>
+    <div class="btn btn-primary down" type="button">
+  <i class="fa fa-thumbs-o-down fa-lg"></i> <span class="badge"><%= idea.get_downvotes.size %></span>
+</div>
+<% end %>
+</div>  <br><br><br><br><br>
+  <hr style="width: 40%;">
+  <% end %>
+  <div class="page">
+  <%= will_paginate @ideas, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
+<style type="text/css">
+.trash {
+  color: #444;
+}
+.badge {
+  color:#f36b21 !important;
+}
+.up {
+  border-radius: 5px !important;
+}
+.btn-group {
+  position: relative;
+  left: 49.3%;
+  margin-left: -66.015px;
+  top:40px;
+}
+.down {
+  left: 73px;
+  border-radius: 5px !important;
+}
+    .navbar-inverse {
+    opacity: .5;
+    border-radius: 0px;
+    z-index: 100;
+  }
+    .navbar-nav {
+      float: right;
+    font-family: Oswald;
+  }
+    .banner {
+    background: url("https://i.imgur.com/aDPhprM.jpg");
+    width: 100%;
+    height:350px;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .banner-header {
+    color: white;
+    font-size: 50px;
+    font-family: Oswald;
+    font-weight: 100;
+    margin-left: 10%;
+    text-align: left;
+    position: relative;
+    top: 50%;
+    margin-top: -25px;
+  }
+   .btn-primary {
+  position: absolute;
+  
+  font-family: Open Sans;
+  background-color: #f36b21;
+  border-color:#f36b21;
+}
+.btn-lg {
+    left: 50%;
+  margin-left: -72.045px;
+  border-radius: 10px;
+}
+.pagination > li > a, .pagination > li > span {
+  color: #FD7830
+}
+.pagination > li > a:hover {
+  color: #E66D2B;
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: #FD7830;
+  border-color:#FD7830;
+}
+.more {
+  margin-left: -55.75px;
+  left: 50%;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color:#e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #e1601a;
+  border-color: #e1601a;
+}
+    .body {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    height: 500px;
+  }
+  .title {
+    position: relative;
+    text-align: center;
+    font-family: Raleway;
+    font-weight: 400;
+    font-size: 50px;
+    color: #555;
+  }
+    .big {
+    position: relative;
+    text-align: center;
+    font-family: Oswald;
+    font-weight: 400;
+    font-size: 70px;
+    color: #444;
+  }
+    .subtitle {
+    position: relative;
+    text-align: center;
+    font-family: Oswald;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 25px;
+    color: #666;
+  }
+  .text {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Raleway;
+    font-size: 25px;
+    bottom: 20px;
+    color: #666;
+    display: block;
+  }
+    .repof {
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: Roboto;
+    font-size: 25px;
+    color: #666;
+    display: block;
+  }
+  .pagination {
+    position: relative;
+    left: 50%;
+    margin-left: -119.125px;
+  }
+</style>
+</body>
+</html>
+

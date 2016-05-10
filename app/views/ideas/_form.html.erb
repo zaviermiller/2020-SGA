@@ -1,0 +1,98 @@
+<%= form_for(@idea) do |f| %>
+<div class="parent">
+    <div class="pass-parent">
+    <%= f.label :firstname, "First Name:", class: "label" %>
+    <div class="password">
+        <%= f.text_field :firstname, autocomplete: "off", class: "form" %>
+    </div>
+    </div>
+    <div class="pass-parent">
+    <%= f.label :lastname,"Last Name:", class: "label" %>
+    <div class="password">
+        <%= f.text_field :lastname, autocomplete: "off", class: "form" %>
+    </div>
+    </div>
+    <%= f.label :title,"Idea Name:", class: "label" %>
+    <div class="username">
+        <%= f.text_field :title, class: "form" %>
+    </div>
+    <div class="pass-parent">
+    <%= f.label :idea,"Idea Description:", class: "label" %>
+    <div class="password">
+        <%= f.text_area :idea, autocomplete: "off", class: "forms" %>
+    </div>
+    </div>
+        <%= f.submit "Submit", class: 'btn btn-primary btn-lg signin' %>
+</div>
+
+<% end %>
+
+<style type="text/css">
+        body {
+        font-family: Raleway;
+        font-weight: 300;
+    }
+    .logo {
+  max-width: 320px;
+  position: absolute;
+  right: 50%;
+  margin-right: -159.625px;
+  top: -12%;
+  margin-top: 38.31px;
+}
+    .form {
+        width: 300px;
+        height: 50px;
+        font-size: 20px;
+        opacity: .6;
+        color: #f36b21
+    }
+        .forms {
+        width: 300px;
+        height: 250px;
+        font-size: 20px;
+        opacity: .6;
+        color: #f36b21
+    }
+    .form:hover {
+        opacity: 1;
+    }
+    .form:focus {
+        opacity: 1;
+    }
+    .parent {
+       margin-left: -150px;
+        left: 50%;
+        position: absolute;
+    }
+    .signin {
+        position: absolute;
+        margin-top: 40px;
+        top: 95%;
+    }
+    .label {
+        text-align: center;
+        color: black;
+        font-size: 15px;
+    }
+    .remember {
+        position: absolute;
+        top: 130%;
+        margin-top: 19.5px;
+    }
+    .pass-parent {
+        padding-top: 10px;
+    }
+    .fp {
+        font-size:13px;
+        color: black;
+        position: absolute;
+        top: 133%;
+        margin-top: 17.29px;
+        left: 40%;
+        margin-left: 42.5124px;
+    }
+    .fp:hover {
+        color: black;
+    }
+</style>
