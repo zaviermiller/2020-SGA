@@ -46,7 +46,7 @@
   <br>
   <% @ideas.each do |idea| %>
 
-  <h1 class="title"><%= idea.title %><% if current_user %><% if current_user.officer? %><%= link_to idea, method: :delete do %><p class="trash"><i class="fa fa-3x fa-trash-o"></i></p><% end %><% end %><% end %></h1>
+  <h1 class="title"><%= idea.title %><% if current_user %><% if current_user.officer? %><%= link_to idea, method: :delete do %><i class="fa trash fa-trash-o"></i><% end %><% end %><% end %></h1>
   <h4 class="subtitle">by: <%= idea.firstname %> <%= idea.lastname %></h4><br>
   <%= link_to idea_path(idea) do %>
   <div class="btn btn-primary more">MORE INFO</div>
