@@ -60,14 +60,14 @@ Twitter: @classof2020_sga<br>
   <div class="btn btn-primary more">MORE INFO</div>
     <% end %>
     <div class="btn-group">
-    <%= link_to like_idea_path(idea), method: :put do %>
+    <%= link_to like_idea_path(idea), method: :put, remote: true do %>
     <div class="btn btn-primary up" type="button">
-  <i class="fa fa-thumbs-o-up fa-lg"></i> <span class="badge"><%= idea.get_upvotes.size %></span>
+  <i class="fa fa-thumbs-o-up fa-lg"></i> <span class="badge upbadge_<%= idea.id %>"><%= idea.get_upvotes.size %></span>
 </div>
 <% end %>
-<%= link_to dislike_idea_path(idea), method: :put do %>
+<%= link_to dislike_idea_path(idea), method: :put, remote: true do %>
     <div class="btn btn-primary down" type="button">
-  <i class="fa fa-thumbs-o-down fa-lg"></i> <span class="badge"><%= idea.get_downvotes.size %></span>
+  <i class="fa fa-thumbs-o-down fa-lg"></i> <span class="badge downbadge_<%= idea.id %>"><%= idea.get_downvotes.size %></span>
 </div>
 <% end %>
 </div>  <br><br><br><br><br>

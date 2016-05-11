@@ -63,12 +63,19 @@ class IdeasController < ApplicationController
 
   def upvote
     @idea.upvote_from current_user
-    redirect_to ideas_path
+    @count = @idea.get_upvotes.size
+    respond_to do |format|
+      format.html { redirect_to ideas_path}
+      format.js
+    end
   end
 
   def downvote
     @idea.downvote_from current_user
-    redirect_to ideas_path
+    respond_to do |format|
+      format.html {redirect_to plans_path}
+      format.js
+    end
   end
 
   private
