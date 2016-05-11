@@ -190,7 +190,7 @@ position: absolute;
 }
   .body {
     position: absolute;
-    top: 110%;
+    top: 700px;
     width: 100%;
     height: 500px;
   }
@@ -235,5 +235,11 @@ position: absolute;
     width: 90%;
   }
 </style>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".1,.2,.3,.submit").hide(0)
+    $(".banner-header,.banner-officers,.submit").hide(0).delay(200).fadeIn(900);
+  });
+</script>
 </body>
 </html>
