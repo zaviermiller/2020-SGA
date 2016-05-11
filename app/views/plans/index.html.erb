@@ -47,7 +47,7 @@
 <% if current_user.officer? %>
 <h1 class="title">UP NEXT</h1><br>
   <% @next.each do |plan| %>
-  <h1 class="text"><%=link_to action_plan_path(plan), method: :patch do%><i class="fa fa-square-o square"></i><% end %> Operation <%= plan.name %>: <%= link_to plan, method: :delete do %><i class="fa fa-trash-o trash"></i><% end %>   <%= link_to edit_plan_path(plan) do %><i class="fa fa-pencil pencil"></i><% end %></h1>
+  <h1 class="text"><%=link_to action_plan_path(plan), method: :patch do%><i class="fa fa-square-o square"></i><% end %> Operation <%= plan.name %>: <%= link_to plan, method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash-o trash"></i><% end %>   <%= link_to edit_plan_path(plan) do %><i class="fa fa-pencil pencil"></i><% end %></h1>
   <% plan.objectives.each do |objective|%>
   <h4 class="subtitle">- <%= objective.body %></h4>
   <% end %><br>
@@ -55,7 +55,7 @@
   <hr style="width: 70%;"><br>
   <h1 class="title">IN ACTION</h1><br>
   <% @action.each do |plan| %>
-  <h1 class="text"><%=link_to complete_plan_path(plan), method: :patch do%><i class="fa fa-square-o square"></i><% end %> Operation <%= plan.name %>:  <%= link_to plan, method: :delete do %><i class="fa fa-trash-o trash"></i><% end %>   <%= link_to edit_plan_path(plan) do %><i class="fa fa-pencil pencil"></i><% end %></h1>
+  <h1 class="text"><%=link_to complete_plan_path(plan), method: :patch do%><i class="fa fa-square-o square"></i><% end %> Operation <%= plan.name %>:  <%= link_to plan, method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash-o trash"></i><% end %>   <%= link_to edit_plan_path(plan) do %><i class="fa fa-pencil pencil"></i><% end %></h1>
   <% plan.objectives.each do |objective|%>
   <h4 class="subtitle">- <%= objective.body %></h4>
   <% end %><br>
